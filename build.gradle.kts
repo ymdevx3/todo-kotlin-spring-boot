@@ -22,6 +22,8 @@ repositories {
 	mavenCentral()
 }
 
+extra["azureVersion"] = "2.1.6"
+
 dependencies {
 	implementation("org.springframework.boot:spring-boot-starter-web")
 	implementation("com.fasterxml.jackson.module:jackson-module-kotlin")
@@ -35,6 +37,15 @@ dependencies {
 	runtime("com.h2database:h2")
 	
 	testCompile("org.assertj:assertj-core:3.9.0")
+
+	implementation("com.microsoft.azure:azure-spring-boot-starter")
+	providedRuntime("org.springframework.boot:spring-boot-starter-tomcat")
+}
+
+dependencyManagement {
+	imports {
+		mavenBom("com.microsoft.azure:azure-spring-boot-bom:${property("azureVersion")}")
+	}
 }
 
 tasks.withType<KotlinCompile> {

@@ -8,7 +8,7 @@ import org.springframework.context.annotation.Bean
 import org.springframework.jdbc.core.JdbcTemplate
 
 @SpringBootApplication
-class TodoApplication {
+class TodoApplication : SpringBootServletInitializer() {
 
 	@Bean
 	fun commandLineRunner(jdbcTemplate: JdbcTemplate) = CommandLineRunner {

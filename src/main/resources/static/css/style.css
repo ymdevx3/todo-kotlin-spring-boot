@@ -253,19 +253,6 @@ ul.todo-edit input.edit {
     border-color: rgba(175, 47, 47, 0.2);
 }
 
-.clear-completed,
-html .clear-completed:active {
-    float: right;
-    position: relative;
-    line-height: 20px;
-    text-decoration: none;
-    cursor: pointer;
-}
-
-.clear-completed:hover {
-    text-decoration: underline;
-}
-
 /*
 	Hack to remove background from Mobile Safari.
 	Can't use it globally since it destroys checkboxes in Firefox
