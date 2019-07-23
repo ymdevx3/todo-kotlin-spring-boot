@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8" http-equiv="Content-Type" content="text/html" />
+    <link th:href="@{/css/style.css}" rel="stylesheet" type="text/css">
+    <title>New Task</title>
+</head>
+<body>
+    <section class="todoapp">
+        <form th:method="post" th:action="@{./}" th:object="${NewTaskForm}">
+            <header class="header">
+                <h1>todos</h1>
+            </header>
+            <section class="main">
+                <div>
+                    <label>
+                        <input type="text" th:field="*{content}" placeholder="What needs to be done?" class="new"/>
+                    </label>
+                    <p th:if="${#fields.hasErrors('content')}" th:errors="*{content}">Error</p>
+                </div>
+                <!--                <div>-->
+                <!--                    <input type="submit" value="Create"/>-->
+                <!--                </div>-->
+            </section>
+            <footer class="footer">
+                <ul class="filters">
+                    <li>
+                        <input type="submit" value="Create"/>
+                    </li>
+                </ul>
+            </footer>
+        </form>
+    </section>
+</body>
+</html>

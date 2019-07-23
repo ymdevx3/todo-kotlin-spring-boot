@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8" http-equiv="Content-Type" content="text/html" />
+    <link th:href="@{/css/style.css}" rel="stylesheet" type="text/css">
+    <title>Edit Task</title>
+</head>
+<body>
+    <section class="todoapp">
+        <form th:method="patch" th:action="@{./}" th:object="${TaskEditForm}">
+            <header class="header">
+                <h1>todos</h1>
+            </header>
+            <section class="main">
+                <ul class="todo-edit">
+                    <li>
+                        <input type="checkbox" th:field="*{completed}"/>
+                    </li>
+                    <li>
+                        <label>
+                            <input type="text" th:field="*{content}" class="edit"/>
+                        </label>
+                        <p th:if="${#fields.hasErrors('content')}" th:errors="*{content}">Error</p>
+                    </li>
+                </ul>
+            </section>
+            <footer class="footer">
+                <ul class="filters">
+                    <li>
+                        <input type="submit" name="update" value="Update"/>
+                    </li>
+                    <li>
+                        <input type="submit" name="delete" value="Delete"/>
+                    </li>
+                </ul>
+            </footer>
+        </form>
+    </section>
+</body>
+</html>

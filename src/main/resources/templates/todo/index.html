@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8" http-equiv="Content-Type" content="text/html" />
+    <link th:href="@{/css/style.css}" rel="stylesheet" type="text/css">
+    <title>Kotlin Todo</title>
+</head>
+<body>
+    <section class="todoapp">
+        <header class="header">
+            <h1>todos</h1>
+        </header>
+        <section class="main">
+            <p th:if="${tasks.isEmpty()}">No task</p>
+            <ul th:unless="${tasks.isEmpty()}" class="todo-list">
+                <li th:each="task: ${tasks}">
+                    <a th:href="@{todo/{id}/edit(id=${task.id})}">
+                        <s th:if="${task.completed}" th:text="${task.content}"></s>
+                        <span th:unless="${task.completed}" th:text="${task.content}"></span>
+                    </a>
+                </li>
+            </ul>
+        </section>
+        <footer class="footer">
+            <span class="todo-count"><strong th:with="count=${@taskStream.activeCount(tasks)}" th:text="${count}"></strong> item left</span>
+            <ul class="filters">
+                <li>
+                    <a th:href="@{todo/new}">Add</a>
+                </li>
+            </ul>
+        </footer>
+    </section>
+</body>
+</html>
